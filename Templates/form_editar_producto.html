@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar</title>
+</head>
+<body>
+<form action="/editar_producto/{{producto.0}}" method="post" >
+<div>
+        <div >
+         <label for="nombre">Ingresa nombre del producto</label>
+         <input type="text" placeholder="Galletas" id="nombre" name="nombre" value="{{producto.1}}">
+
+         <label for="descripcion">Describe el producto</label>
+            <textarea id="descripcion" name="descripcion">{{producto.2}}</textarea>
+
+         <label for="precio">Ingresa precio del producto</label>
+         <input type="text" placeholder="4.00" id="precio" name="precio" value="{{producto.3}}">
+        </div>
+
+
+
+   <div>
+
+
+    <input type="submit" value="Actualizar">
+    </div>
+</div>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+    <meta charset="UTF-8">
+    <meta autor="Odisey Porras">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta keywords="turismo">
+    <link rel="stylesheet" href="./static/css/formulario.css" type="text/css">
+
+    <title>Web</title>
+</head>
+
+<body>
+
+<form action="{{url_for('guardar_producto')}}" method="post" >
+<div>
+        <div >
+         <label for="nombre">Ingresa nombre del producto</label>
+         <input type="text" placeholder="Galletas" id="nombre" name="nombre">
+
+         <label for="descripcion">Describe el producto</label>
+            <textarea id="descripcion" name="descripcion"></textarea>
+
+         <label for="precio">Ingresa precio del producto</label>
+         <input type="text" placeholder="4.00" id="precio" name="precio">
+        </div>
+
+
+
+   <div>
+
+
+    <input type="submit" value="Enviar">
+    </div>
+</div>
+</form>
+
+<div>
+    <h1 class="titulo">Respuestas </h1>
+</div>
+ <div>
+     <table>
+         <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nombre</td>
+                    <td>Precio</td>
+                    <td>Descripcion</td>
+                    <td>Editar</td>
+                    <td>Eliminar</td>
+                </tr>
+         </thead>
+         <tbody>
+
+            {%for producto in lista_productos %}
+                <tr>
+                    <td>{{producto.0}}</td>
+                    <td>{{producto.1}}</td>
+                    <td>{{producto.2}}</td>
+                    <td>{{producto.3}}</td>
+                    <td><a href="/consultar_producto/{{producto.0}}">Editar</a></td>
+                    <td><a href="/eliminar_producto/{{producto.0}}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+         </tbody>
+     </table>
+ </div>
+
+</body>
+
+</html>
+
