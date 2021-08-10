@@ -1,8 +1,9 @@
 from flask import Flask,render_template, request, redirect, url_for
-from flaskext.mysql import MySQL
+from flask_sqlalchemy import  SQLAlchemy
+#from flaskext.mysql import MySQL
 
 # This is a sample Python script.
-
+#pip freeze > requirements.txt
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 #source ./venv/bin/activate
@@ -10,16 +11,23 @@ from flaskext.mysql import MySQL
 #pip install flask
 
 
-mysql = MySQL()
+#mysql = MySQL()
+
 app = Flask(__name__,static_url_path='/static')
+db = SQLAlchemy(app)
 
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Odisey123'
-app.config['MYSQL_DATABASE_DB'] = 'db_productos'
-app.config['MYSQL_DATABASE_PORT'] = 3306
-
-mysql.init_app(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/flasksql'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.secret_key = 'secret string'
+#app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+#app.config['MYSQL_DATABASE_USER'] = 'root'
+#app.config['MYSQL_DATABASE_PASSWORD'] = 'Odisey123'
+#app.config['MYSQL_DATABASE_DB'] = 'db_productos'
+#app.config['MYSQL_DATABASE_PORT'] = 3306
+#para postgres
+#pip install flask_sqlalchemy
+#pip install psycopg2-binary #for using postgres
+#mysql.init_app(app)
 
 @app.route("/")
 def index():
